@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dijkstra's Algorithm Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dijkstra's Algorithm Visualization</h1>
+
+        <div class="mode-selector">
+            <button id="create-mode-btn" class="mode-btn active">Create Graph</button>
+            <button id="run-mode-btn" class="mode-btn">Run Algorithm</button>
+        </div>
+
+        <div id="create-tools" class="tools-panel">
+            <div class="tool-group">
+                <button id="add-node-btn" class="tool-btn active">Add Node</button>
+                <button id="connect-nodes-btn" class="tool-btn">Connect Nodes</button>
+                <button id="set-start-btn" class="tool-btn">Set Start</button>
+                <button id="set-end-btn" class="tool-btn">Set End</button>
+                <button id="delete-btn" class="tool-btn">Delete</button>
+            </div>
+            <div class="tool-group">
+                <button id="clear-graph-btn" class="danger-btn">Clear Graph</button>
+                <button id="example-graph-btn">Load Example</button>
+            </div>
+            <div class="weight-input">
+                <label for="edge-weight">Edge Weight:</label>
+                <input type="number" id="edge-weight" min="1" max="100" value="1">
+            </div>
+        </div>
+
+        <div id="run-tools" class="tools-panel hidden">
+            <div class="controls">
+                <button id="start-btn">Start</button>
+                <button id="pause-btn" disabled>Pause</button>
+                <button id="reset-btn">Reset</button>
+                <div class="speed-control">
+                    <label for="speed">Speed:</label>
+                    <input type="range" id="speed" min="1" max="10" value="5">
+                </div>
+            </div>
+        </div>
+
+        <div class="info-panel">
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="node start"></div>
+                    <span>Start Node</span>
+                </div>
+                <div class="legend-item">
+                    <div class="node end"></div>
+                    <span>End Node</span>
+                </div>
+                <div class="legend-item">
+                    <div class="node current"></div>
+                    <span>Current Node</span>
+                </div>
+                <div class="legend-item">
+                    <div class="node visited"></div>
+                    <span>Visited Node</span>
+                </div>
+                <div class="legend-item">
+                    <div class="node path"></div>
+                    <span>Path Node</span>
+                </div>
+            </div>
+            <div class="algorithm-info">
+                <h3>Current Step:</h3>
+                <p id="current-step">Create your graph or load an example</p>
+            </div>
+        </div>
+
+        <div class="graph-container">
+            <canvas id="graph-canvas"></canvas>
+            <div id="instructions" class="instructions">
+                <p id="instruction-text">Click anywhere to add a node</p>
+            </div>
+        </div>
+
+        <!-- Node edit modal -->
+        <div id="node-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Edit Node</h3>
+                <div class="form-group">
+                    <label for="node-label">Label:</label>
+                    <input type="text" id="node-label" maxlength="3">
+                </div>
+                <button id="save-node-btn">Save</button>
+            </div>
+        </div>
+
+        <!-- Edge edit modal -->
+        <div id="edge-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Edit Edge Weight</h3>
+                <div class="form-group">
+                    <label for="edge-weight-input">Weight:</label>
+                    <input type="number" id="edge-weight-input" min="1" max="100" value="1">
+                </div>
+                <button id="save-edge-btn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
